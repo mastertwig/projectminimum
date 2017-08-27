@@ -6,7 +6,9 @@ public class PlayerMovement : MonoBehaviour
     private Transform myTransform;              // this transform
     private Vector3 destinationPosition;        // The destination Point
     private float destinationDistance;          // The distance between myTransform and destinationPosition
-
+    Animator animator;
+    public float speedPercent;
+    const float animationSmoothing = .1f;
     public float moveSpeed;                     // The Speed the character will move
 
 
@@ -15,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         myTransform = transform;                            // sets myTransform to this GameObject.transform
         destinationPosition = myTransform.position;         // prevents myTransform reset
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -29,9 +32,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (destinationDistance > .5f)
         {           // To Reset Speed to default
-            moveSpeed = 3;
+            moveSpeed = 1;
         }
 
+        speedPercent = moveSpeed;
+        animator.SetFloat("speedPercent", speedPercent, animationSmoothing, Time.deltaTime);
 
         // Moves the Player if the Left Mouse Button was clicked
         if (Input.GetMouseButtonDown(0) && GUIUtility.hotControl == 0)

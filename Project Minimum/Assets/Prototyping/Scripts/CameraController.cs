@@ -17,7 +17,6 @@ public class CameraController : MonoBehaviour
     public float rotateSpeed = 1f;
 
     // Options.
-    public bool doRotate;
     public bool doZoom;
 
     // The movement amount when zooming.
@@ -68,22 +67,9 @@ public class CameraController : MonoBehaviour
             zoomResult = new Vector3(0f, height, -distance);
         }
 
-        if (doRotate)
-        {
-            // Work out the current and wanted rots.
-            float currentRotationAngle = transform.eulerAngles.y;
-            float wantedRotationAngle = target.eulerAngles.y;
-
-            // Smooth the rotation.
-            currentRotationAngle = Mathf.LerpAngle(currentRotationAngle, wantedRotationAngle, rotateSpeed * Time.deltaTime);
-
-            // Convert the angle into a rotation.
-            rotationResult = Quaternion.Euler(0f, currentRotationAngle, 0f);
-        }
-
         // Set the camera position reference.
-        targetAdjustedPosition = rotationResult * zoomResult;
-        transform.position = target.position + targetAdjustedPosition;
+        //targetAdjustedPosition = rotationResult * zoomResult;
+        transform.position = target.position;
 
         // Face the desired position.
         transform.LookAt(target);

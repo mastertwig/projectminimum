@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (destinationDistance > .5f)
         {           // To Reset Speed to default
-            moveSpeed = 1;
+            moveSpeed = 3;
         }
 
         speedPercent = moveSpeed;

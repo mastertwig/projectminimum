@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraControllerTest : MonoBehaviour
 {
     // Camera target to look at.
     public Transform target;

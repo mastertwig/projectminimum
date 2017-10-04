@@ -3,35 +3,41 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Mouse_Over : MonoBehaviour
+public class MouseOverText : MonoBehaviour
 {
 
-    public string myString;
+    public string objectName;
     public Text labelText;
+    public GameObject MouseOverTextUI;
     public float fadeTime;
-    public bool displayLabel;
+    //private bool displayLabel;
 
-
+    /*
     void Update()
     {
         FadeText();
     }
+    */
         
     void OnMouseOver()
     {
-        displayLabel = true;
+        //displayLabel = true;
+        labelText.text = objectName;
+        MouseOverTextUI.SetActive(true);
     }
 
     void OnMouseExit()
     {
-        displayLabel = false;
+        //displayLabel = false;
+        MouseOverTextUI.SetActive(true);
     }
 
+    /*
     void FadeText ()
     {
         if (displayLabel)
         {
-            labelText.text = myString;
+            labelText.text = objectName;
             labelText.color = Color.Lerp(labelText.color, Color.white, fadeTime * Time.deltaTime);
         }
         else
@@ -40,6 +46,7 @@ public class Mouse_Over : MonoBehaviour
         }
 
     }
+    */
 
 
 }

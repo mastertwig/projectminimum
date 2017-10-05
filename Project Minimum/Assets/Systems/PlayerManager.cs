@@ -20,12 +20,15 @@ public class PlayerManager : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log(hit.collider.name);
+                BasicInkExample ink = hit.transform.GetComponent<BasicInkExample>();
+                ink.StartStory();
+                /*Debug.Log(hit.collider.name);
                 DialogueTrigger dialogue = hit.transform.GetComponent<DialogueTrigger>();
                 if (hit.transform.GetComponent<DialogueTrigger>() != null)
                 {
                     dialogue.TriggerDialogue();
                 }
+                */
             }
         }
     }

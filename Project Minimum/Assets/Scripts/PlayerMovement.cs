@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player_Movement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     private Transform myTransform;              // this transform
     private Vector3 destinationPosition;        // The destination Point

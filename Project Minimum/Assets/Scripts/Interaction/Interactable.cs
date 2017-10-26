@@ -7,11 +7,18 @@ public class Interactable : MonoBehaviour
 
     public float radius = 3f;               // How close do we need to be to interact?
     public Transform interactionTransform;  // The transform from where we interact in case you want to offset it
+    private Renderer rend;
+    public Color color;
 
     bool isFocus = false;   // Is this interactable currently being focused?
     Transform player;       // Reference to the player transform
 
     bool hasInteracted = false; // Have we already interacted with the object?
+
+    private void Start()
+    {
+        rend = GetComponent<Renderer>();
+    }
 
     public virtual void Interact()
     {
@@ -35,6 +42,17 @@ public class Interactable : MonoBehaviour
             }
         }
     }
+
+    private void OnMouseEnter()
+    {
+        rend.material.color = color;
+    }
+
+    private void OnMouseExit()
+    {
+        rend.material.color = Color.white;
+    }
+
 
     // Called when the object starts being focused
     public void OnFocused(Transform playerTransform)
